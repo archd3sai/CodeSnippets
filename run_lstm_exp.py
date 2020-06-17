@@ -26,7 +26,7 @@ def run_exp_model(X, y, X_val, y_val, X_test, y_test, nruns = 10):
     Dataframe with Model Run, Accuracy, Precision, Recall, F1 Score, AUC Score
     """
     
-    score_df = pd.DataFrame(columns=["Model", "Accuracy", "Precision", "Recall", "F1_score", "AUC Score"])
+    score_df = pd.DataFrame(columns=["Model", "Accuracy", "Precision", "Recall", "F1 Score", "AUC Score"])
 
     for i in range(0, nruns):
         start = time.time()
@@ -58,8 +58,8 @@ def run_exp_model(X, y, X_val, y_val, X_test, y_test, nruns = 10):
         f1 = f1_score(y_test,predictions)
         auc = roc_auc_score(y_test,predictions)
 
-        score_df = score_df.append({'Model':i, 'Accuracy': acc, 'Precision': pr, 'Recall': rc,
-                                    'F1 Score': f1, 'AUC_Score': auc}, ignore_index=True)
+        score_df = score_df.append({'Model':i+1, 'Accuracy': acc, 'Precision': pr, 'Recall': rc,
+                                    'F1 Score': f1, 'AUC Score': auc}, ignore_index=True)
         end = time.time()
         print("Run:", i+1, " and Runtime:", np.round(end - start, 3), " Seconds", sep = "")        
     
