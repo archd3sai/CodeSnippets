@@ -44,3 +44,7 @@ ax.xaxis.set_tick_params(rotation=0)
 # for seaborn plots specify axis as ax
 sns.lineplot(range(10), autoencoder_w1_history['accuracy'], ax = ax, linewidth = 1, label = "Accuracy")
 sns.lineplot(range(10), autoencoder_w1_history['val_accuracy'], ax = ax, linewidth = 1, label = "Validation Accuracy")
+
+# for common x and y label in subplots
+fig.text(0.5, 0.04, 'common X', ha='center')
+fig.text(0.04, 0.5, 'common Y', va='center', rotation='vertical')
