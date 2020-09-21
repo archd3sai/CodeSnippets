@@ -1,7 +1,7 @@
 def failure_prediction(algo, training_x, training_y, testing_x, testing_y, cols, cf, pca = False):
     algo.fit(training_x,training_y)
     predictions = algo.predict(testing_x)
-    probabilities = algo.predict_proba(testing_x)
+    probabilities = algo.predict_proba(testing_x)[:,1]
     
     #coeffs
     if cf == "coefficients":
@@ -36,9 +36,9 @@ def failure_prediction(algo, training_x, training_y, testing_x, testing_y, cols,
     print("F1 Score: ", f1)
     
     #roc_auc_score
-    model_roc_auc = roc_auc_score(testing_y,predictions) 
+    model_roc_auc = roc_auc_score(testing_y,probabilities) 
     print ("Area under curve : ",model_roc_auc,"\n")
-    fpr,tpr,thresholds = roc_curve(testing_y,probabilities[:,1])
+    fpr,tpr,thresholds = roc_curve(testing_y,probabilities)
     gmeans = np.sqrt(tpr * (1-fpr))
     ix = np.argmax(gmeans)
     threshold = np.round(thresholds[ix],3)
