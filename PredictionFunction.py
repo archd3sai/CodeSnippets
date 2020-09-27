@@ -32,7 +32,7 @@ def failure_prediction(algo, training_x, training_y, testing_x, testing_y, cols,
     plt.xlabel('Predicted Values')
     
     #f1-score
-    f1 = f1_score(testing_y, predictions, average="macro")
+    f1 = f1_score(testing_y, predictions)
     print("F1 Score: ", f1)
     
     #roc_auc_score
