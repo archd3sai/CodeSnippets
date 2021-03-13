@@ -16,4 +16,3 @@ ax[1].set_xlabel('# Epoch')
 ax[1].legend(['train', 'test'], loc='upper left')
 ax[1].set_title('Loss')
 
-## new changes
